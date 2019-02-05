@@ -12,7 +12,7 @@ class ErrorBoundary extends Component {
 
     render() {
         if (this.state.hasError) {
-            return <h>Something went wrong</h>;
+            return <h1>Something went wrong</h1>;
         }
         else {
             return this.props.children;
