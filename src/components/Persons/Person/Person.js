@@ -1,21 +1,31 @@
 import React, {Component} from 'react';
 import classes from './Person.css';
+import WithClass from '../../../hoc/WithClass';
 
-const person = (props) => {
+class Person extends  Component {
+    constructor(props) {
+        super(props);
+        console.log("[Person.js] Inside Constructor", props);
+    }
 
-    // const rnd = Math.random();
-    // console.log("Random number = " + rnd);
-    // if (rnd > 0.7) {
-    //     throw new Error('Something went wrong');
-    // }
+    componentWillMount() {
+        console.log("[Person.js] Inside componentWillMount()");
+    }
 
-    return (
-        <div className={classes.Person}>
-            <p onClick={props.click}>I'am {props.name} and i am {props.age} years old!</p>
-            <p>{props.children}</p>
-            <input type="text" onChange={props.changed} value={props.name}/>
-        </div>
-    )
+    componentDidMount() {
+        console.log("[Person.js] Inside componentDidMount()");
+    }
+
+    render() {
+        console.log("[Person.js] Inside render()");
+        return (
+            <WithClass classes={classes.Person}>
+                <p onClick={this.props.click}>I'am {this.props.name} and i am {this.props.age} years old!</p>
+                <p>{this.props.children}</p>
+                <input type="text" onChange={this.props.changed} value={this.props.name}/>
+            </WithClass>
+        )
+    }
 }
 
-export default person;
+export default Person;
